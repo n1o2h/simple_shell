@@ -13,7 +13,7 @@ char **splitazer(char *read)
 	char **cmd = NULL, del[] = " \t\n";
 	int count = 0, i = 0;
 
-	if (read == NULL)
+	if (!read)
 		return (NULL);
 
 	tem = _strdup(read);

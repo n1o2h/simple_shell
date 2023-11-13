@@ -6,7 +6,7 @@
  * Return: the command line.
  */
 
-char *read_line(void)
+char *read_line()
 {
 	char *read = NULL;
 	size_t count = 0;
@@ -51,7 +51,7 @@ int main(int ac, char **argv)
 		cmd = splitazer(read);
 		if (!cmd)
 			continue;
-		if (_binaya_ton(cmd[0])
+		if (_binaya_ton(cmd[0]))
 			_bin_handlon(cmd, argv, &stat, num);
 		else
 			stat = execute(cmd, argv, num);

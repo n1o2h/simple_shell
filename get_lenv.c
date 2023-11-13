@@ -9,13 +9,22 @@
 
 char *shows_path(char *path)
 {
-	size_t len_n = _strlen(path);
-	char **nov;
+	char *pam, *sort, *val, *nov;
+	int i = 0;
 
-	for (nov = environ; *nov != NULL; ++nov)
+	while (environ[i])
 	{
-		if (_strncmp(*nov, path, len_n) == 0 && (*nov)[len_n] == '=')
-			return (&((*nov)[len_n + 1]));
+		pam = _strdup(environ[i]);
+		sort = strtok(pam, "=");
+		if (_strcmp(sort, path) == 0)
+		{
+			val = strtok(NULL, "\n");
+			nov = _strdup(val);
+			free(pam);
+			return (nov);
+		}
+		free(pam), pam = NULL;
+		i++;
 	}
 	return (NULL);
 }
@@ -60,11 +69,12 @@ char *handle_path(char *mycom)
 
 			if (stat(fullpath, &buff) == 0)
 			{
+				free(path);
 				return (fullpath);
 			}
-			else
-				free(fullpath), fullpath = NULL;
+			free(fullpath), fullpath = NULL;
 		}
 	}
+	free(path);
 	return (NULL);
 }
