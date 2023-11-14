@@ -9,16 +9,16 @@
 
 void error_one(char *ism, char *cmd, int num)
 {
-	char *ofdix;
+	char *ofdix, msg[] = ":not found\n";
 
 	ofdix = _itoa(num);
+	write(STDERR_FILENO, ism, _strlen(ism));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, ofdix, _strlen(ofdix));
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, cmd, _strlen(cmd));
+	write(STDERR_FILENO, msg, _strlen(msg));
 
-	write(1, ism, _strlen(ism));
-	write(1, ": ", 3);
-	write(1, ofdix, _strlen(ofdix));
-	write(1, ": ", 3);
-	write(1, cmd, _strlen(cmd));
-	write(1, ": not found\n", 13);
 	free(ofdix);
 }
 
@@ -61,3 +61,4 @@ int execute(char **cmd, char **argv, int num)
 	}
 	return (WEXITSTATUS(stat));
 }
+
