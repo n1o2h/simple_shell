@@ -4,7 +4,7 @@
  * free2D - free array
  * @arr: the one who want to free.
  *
- */
+*/
 void free2D(char **arr)
 {
 	int i;
@@ -23,7 +23,7 @@ void free2D(char **arr)
  * @num: the size of all these string.
  *
  * Return: 0 on seccess, 1 on error
- */
+*/
 int _strncmp(const char *S1, const char *S2, size_t num)
 {
 	size_t i;
@@ -43,7 +43,7 @@ int _strncmp(const char *S1, const char *S2, size_t num)
  * @n: the number of ascci.
  *
  * Return: the word who converted.
- */
+*/
 char *_itoa(int n)
 {
 	char buff[10];
@@ -60,5 +60,31 @@ char *_itoa(int n)
 		}
 	}
 	buff[i] = '\0';
+	rev_str(buff, i);
+
 	return (_strdup(buff));
 }
+
+/**
+ * rev_str - reverse the string
+ * @str: the string
+ * @len: lenght of the string
+ * Return: void
+*/
+
+void rev_str(char *str, int len)
+{
+	char tmp;
+	int st = 0;
+	int end = len - 1;
+
+	while (st < end)
+	{
+		tmp = str[st];
+		str[st] = str[end];
+		str[end] = tmp;
+		st++;
+		end--;
+	}
+}
+
