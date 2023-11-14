@@ -12,6 +12,8 @@ int _binaya_ton(char *cmd)
 	char *bin[] = {
 		"exit",
 		"env",
+		"setenv",
+		"cd",
 		NULL
 	};
 	int i = 0;
@@ -31,16 +33,13 @@ int _binaya_ton(char *cmd)
  * @argv: the vector.
  * @stat: value of return command.
  * @num: the integer to store error
- *
+ * Return: void
  */
 
 void _bin_handlon(char **cmd, char **argv, int *stat, int num)
 {
-	(void)argv;
-	(void)num;
-
 	if (_strcmp(cmd[0], "exit") == 0)
-		_quit_pro(cmd, stat);
+		_quit_pro(cmd, argv, stat, num);
 	else if (_strcmp(cmd[0], "env") == 0)
 		_environ_write(cmd, stat);
 }
@@ -48,22 +47,24 @@ void _bin_handlon(char **cmd, char **argv, int *stat, int num)
 /**
  * _quit_pro - the function to quit the programm.
  * @cmd: the command.
- * @stat: the value
- *
+ * @stat: the value of exit 
+ * Return: void
  */
 
 void _quit_pro(char **cmd, int *stat)
 {
+
 	free2D(cmd);
 	exit(*stat);
 }
+
 
 /**
  * _environ_write - this to write environ.
  * @cmd: the command.
  * @stat: the value of return.
  *
- */
+*/
 
 void _environ_write(char **cmd, int *stat)
 {
@@ -71,10 +72,11 @@ void _environ_write(char **cmd, int *stat)
 
 	while (environ[i])
 	{
-		write(1, environ[i], _strlen(environ[i]));
-		write(1, "\n", 2);
+		write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
+		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}
 	free2D(cmd);
 	(*stat) = 0;
 }
+
