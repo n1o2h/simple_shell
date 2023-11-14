@@ -31,6 +31,13 @@ char **splitazer(char *read)
 	}
 	free(tem), tem = NULL;
 	cmd = malloc(sizeof(char *) * (count + 1));
+	if (!cmd)
+	{
+		free(read);
+		read = NULL;
+		return (NULL);
+	}
+
 	tok = strtok(read, del);
 
 	for (; tok; i++)
@@ -42,3 +49,4 @@ char **splitazer(char *read)
 	cmd[i] = NULL;
 	return (cmd);
 }
+
