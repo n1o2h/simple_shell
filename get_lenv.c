@@ -32,7 +32,6 @@ char *shows_path(char *path)
 /**
  * handle_path - The function to handle path.
  * @mycom: the command.
- *
  * Return: NULL.
  */
 
@@ -48,7 +47,7 @@ char *handle_path(char *mycom)
 		{
 			if (stat(mycom, &buff) == 0)
 				return (_strdup(mycom));
-			else
+
 				return (NULL);
 		}
 		i++;
@@ -58,7 +57,7 @@ char *handle_path(char *mycom)
 		return (NULL);
 
 	pathdir = strtok(path, ":");
-	for (; pathdir != NULL; pathdir = strtok(NULL, ":"))
+	while (pathdir)
 	{
 		fullpath = malloc(_strlen(pathdir) + _strlen(mycom) + 2);
 		if (fullpath)
@@ -69,12 +68,14 @@ char *handle_path(char *mycom)
 
 			if (stat(fullpath, &buff) == 0)
 			{
-				free(path);
+				free(path), path = NULL;
 				return (fullpath);
 			}
 			free(fullpath), fullpath = NULL;
+			pathdir = strtok(NULL, ":");
 		}
 	}
-	free(path);
+	free(path), path = NULL;
 	return (NULL);
 }
+
