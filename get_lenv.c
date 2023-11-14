@@ -48,7 +48,7 @@ char *handle_path(char *mycom)
 			if (stat(mycom, &buff) == 0)
 				return (_strdup(mycom));
 
-				return (NULL);
+			return (NULL);
 		}
 		i++;
 	}

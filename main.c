@@ -52,7 +52,7 @@ int main(int ac, char **argv)
 		if (!cmd)
 			continue;
 		if (_binaya_ton(cmd[0]))
-			_bin_handlon(cmd, argv, *stat, num);
+			_bin_handlon(cmd, argv, &stat, num);
 		else
 			stat = execute(cmd, argv, num);
 	}

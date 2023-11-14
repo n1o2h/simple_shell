@@ -38,8 +38,11 @@ int _binaya_ton(char *cmd)
 
 void _bin_handlon(char **cmd, char **argv, int *stat, int num)
 {
+	(void)argv;
+	(void)num;
+
 	if (_strcmp(cmd[0], "exit") == 0)
-		_quit_pro(cmd, argv, stat, num);
+		_quit_pro(cmd, stat);
 	else if (_strcmp(cmd[0], "env") == 0)
 		_environ_write(cmd, stat);
 }
