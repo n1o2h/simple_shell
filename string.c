@@ -117,3 +117,4 @@ int _strlen(char *s)
 		a++;
 	return (a);
 }
+
