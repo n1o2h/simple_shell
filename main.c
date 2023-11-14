@@ -1,10 +1,12 @@
 #include "shell.h"
 
+
 /**
  * read_line - the function who list a prompt to user
  *
  * Return: the command line.
  */
+
 
 char *read_line()
 {
@@ -23,12 +25,14 @@ char *read_line()
 	return (read);
 }
 
+
 /**
  * main - simple shell main function
  * @ac: count argument.
  * @argv: the vector argument.
  * Return: 0 on success, 1 on error
  */
+
 
 int main(int ac, char **argv)
 {
