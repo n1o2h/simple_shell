@@ -24,7 +24,7 @@ char *read_line()
 }
 
 /**
- * main - entry point
+ * main - simple shell main function
  * @ac: count argument.
  * @argv: the vector argument.
  * Return: 0 on success, 1 on error
@@ -42,8 +42,8 @@ int main(int ac, char **argv)
 		read = read_line();
 		if (read == NULL)
 		{
-			if (isatty(0))
-				write(1, "\n", 2);
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
 			return (stat);
 		}
 		num++;
@@ -52,8 +52,9 @@ int main(int ac, char **argv)
 		if (!cmd)
 			continue;
 		if (_binaya_ton(cmd[0]))
-			_bin_handlon(cmd, argv, &stat, num);
+			_bin_handlon(cmd, argv, *stat, num);
 		else
 			stat = execute(cmd, argv, num);
 	}
 }
+
