@@ -27,6 +27,8 @@ void _environ_write(char **cmd, int *stat);
 /*all suport function*/
 void rev_str(char *str, int len);
 char *_itoa(int n);
+int pos_num(char *str);
+int _atoi(char *str);
 int _strncmp(const char *S1, const char *S2, size_t num);
 void free2D(char **arr);
 void _puts(char *str);
@@ -39,3 +41,4 @@ char *_strdup(char *str);
 extern char **environ;
 
 #endif /*SHELL_H*/
+
