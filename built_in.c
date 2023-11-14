@@ -50,7 +50,7 @@ void _bin_handlon(char **cmd, char **argv, int *stat, int num)
 /**
  * _quit_pro - the function to quit the programm.
  * @cmd: the command.
- * @stat: the value of exit 
+ * @stat: the value of exit
  * Return: void
  */
 
